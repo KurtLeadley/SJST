@@ -1,0 +1,542 @@
+/* Colors: 
+#307D7E : Teal
+#FF9900 : Orange */
+
+@media (max-width: 1000px) { 
+  .logo {
+		height: 80px !important;
+	}
+	#side-a2 {
+		display:none;
+	}
+	
+	#side-b { 
+		display: none; 
+	}
+  #side-a {
+		display:none;
+	}
+	#wrapper #content { 
+		width:100%  !important;
+		display: inline-block;
+		margin-left: auto;
+		margin-right:auto;
+		text-align:center;
+		padding: .5em !important;	
+		background-image: url("images2/background.png");
+	} 
+	
+	#fixedHeader {
+		visibility: hidden;
+	}
+	
+	#fixedHeader_mobile {
+		visibility: visible !important; 
+		height:80px !important;
+	}
+	.upper-nav {
+		font-size: 3.5em !important;
+		padding-top:.1em !important;
+	}
+	table.scoresHeader {
+    margin-top: 4em !important;
+	}
+	.scoreButton {
+		height:2em !important;
+		width: 4.5em !important;
+		font-size: 1.85em !important;
+	}
+	.dateDropDown {
+		height:2em !important;
+		width: 4em !important;
+		font-size: 1.85em !important;
+	}
+	h1 {
+		font-size:5.0em !important; 
+	}
+	h2 {
+		font-size:3.5em !important; 
+	}
+	h3 {
+		font-size:2.75em !important; 
+	}
+	h4 {
+		font-size:2.5em !important; 
+	}
+	h5 {
+		font-size:2.35em !important; 
+	}
+	.scoreResult {
+    font-size: 1em !important;
+	}
+	.scores {
+		font-size: 2.25em !important;
+	}
+	.table.sortable {
+    width: 100% !important;
+	}
+	.table.sortable td {
+		font-size: 2.35em !important;
+		
+	}	
+	.dropDown {
+		height:2em !important;
+		width: 8em !important;
+		font-size: 2.35em !important;
+	}
+	.customBtn span {
+		font-size: 1.35em !important;   
+	}
+	.customBtn {
+		font-size: 2.65em !important;   
+	}
+	#backtotop {
+    font-size: 3em !important;
+	}
+}
+
+body { 
+	margin: 0; 
+	background-image: url("images2/background.png");
+}
+#fixedHeader {
+	position: fixed; 
+	top: 0px; 
+	height: 40px;
+  background-image: url("images2/background.png");
+	min-width: 100%;
+}
+
+#fixedHeader_mobile {
+	position: fixed; 
+	top: 0px; 
+	height: 40px;
+  background-image: url("images2/background.png");
+	min-width: 100%;
+	visibility: hidden;
+}
+
+#wrapper {
+	background-image: url("images2/background.png");
+	width:100%;
+	text-align: center;
+	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+	color: #307D7E;
+	clear: both;
+	padding:1em 0;
+}
+
+#liveScores {
+	clear:both;
+	overflow:auto  !important;
+}
+#notLiveScores {
+	clear:both;
+	margin-top:2em;
+	overflow:auto  !important;
+}
+
+#content {   
+	width: 60%;
+	display: inline-block;
+	margin-left: auto;
+	margin-right:auto;
+	text-align:center;
+	padding: .5em;	
+}
+#side-a {
+	float: left;
+	width: 18%;
+	text-align:center;
+}
+
+#side-a2 {
+	float: left;
+	width: 18%;
+	text-align:center;
+	margin-top: 4em;
+}
+
+#side-b {
+	float: right;
+	width: 18%;
+	margin-top: 4em;
+}
+
+#news {
+	width: 80%;
+	margin: auto;
+	list-style-type: none;
+}
+
+#footer {
+	clear: both;
+  background-image: url("images2/background.png");
+	padding-bottom: 2em;
+}
+
+#backtotop {
+	font-size:1em;
+}
+
+h1	{
+font-size: 2.2em;
+font-style: bold;
+text-align:center;
+box-shadow: 0px 0px 35px #307D7E;
+margin-top: 20px;
+margin-bottom: 10px;
+padding: .1em;
+background-image: url("/images2/background.png");
+}
+h2 {
+font-size:1.8em;
+font-style: bold;
+margin-bottom:.3em;
+}
+
+h3 {
+font-size: 1em;
+text-align: center;
+}
+h4 {
+font-size: 18px;
+text-align: center;
+color: #307D7E;
+margin: 0;
+padding-top: 4px;
+padding-bottom:2px;
+background-color: #151515;
+}
+
+h5 {
+font-size: 16px;
+text-align: center;
+color: #307D7E;
+margin: 0;
+padding-top: 4px;
+padding-bottom:2px;
+background-image: url("images2/background.png");
+}
+hr {
+	color: #307D7E;
+}
+
+li {
+	font-size: .85em;
+}
+.homemaintext {
+	width:75%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.upper-nav  {
+	font-size: .9em;
+	font-weight: bold;
+	width:95%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top:.6em;
+	padding-bottom:.2em;	
+}
+
+a {color:#FF9900;}
+a:hover {color:white;}
+a:visited {color:#white;}
+
+a.teamname {color:#307D7E !important;}
+a.teamname:hover {color:white !important;}
+a.teamname:visited {color:#white !important;}
+
+
+.hover:hover { 
+	color: white !important; 
+	cursor:pointer !important;
+} 
+
+.hover2:hover { 
+	color: white !important; 
+	cursor:pointer !important;
+} 
+
+.scoreButton {
+	background-color: #307D7E;
+	border-color: #307D7E;
+}
+
+.scoreButton:hover {
+ color: white !important; 
+ cursor:pointer !important;
+}
+
+.dropDown {
+	background-color:#307D7E;
+	font-size:11pt;
+	border-color: #181818;
+	margin-bottom:1em;
+	font-weight:bold;
+	padding-right:4px;
+	width:120px;
+}
+
+.dateDropDown {
+	background-color:#307D7E;
+	font-size:11pt;
+	border-color: #307D7E;
+	cursor:pointer !important;
+	padding-right:10px;
+}
+.dropDown:hover {
+ cursor:pointer !important;
+}
+
+
+table.scoresHeader {
+	color: #307D7E;
+  table-layout:fixed;
+	margin-left: auto;
+	margin-right:auto;
+	text-align:center;
+	padding: 4px;
+} 
+
+.scoresHeader td {
+	padding: 4px;
+} 
+.TableHeaders {
+	color:#FF9900;
+}
+
+.scores {
+	table-layout:fixed;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right:auto;
+	font-size: .80em;
+} 
+
+.scores td {
+	word-wrap: break-word;
+	color: #307D7E;
+	padding-right:6px;
+	padding-left: 6px;
+} 
+
+
+.scores tr:nth-child(even) {
+	background-image: url("images2/tr7.png");
+}
+.scores tr:nth-child(odd) {
+	background-image: url("images2/tr7.png");
+}
+
+.scoreResult {
+	font-size: 1em;
+}
+
+
+.table {
+	table-layout:fixed;
+	width: 98%;
+	margin-left: auto;
+	margin-right: auto;
+} 
+
+.table td  {
+	word-wrap: break-word;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	font-size: .8em;
+	text-align: center;	
+}
+.table th {
+	word-wrap: break-word;
+	color: #FF9900;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+	background-image: url("images2/tr7.png");
+}
+.table tr:nth-child(odd) {
+	background-image: url("images2/tr5.png");
+}
+
+
+.table.sortable {
+	table-layout:fixed;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+
+} 
+
+.table.sortable {
+	table-layout:fixed;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: .6em;
+	padding-bottom: 0em;
+} 
+.table.sortable td {
+	padding: .2em;
+	font-size: .8em;
+	text-align: center;	
+}
+
+.table.sortable2 {
+	table-layout:fixed;
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: .6em;
+	padding-bottom: 0em;
+} 
+.table.sortable2 td {
+	padding: .0em .2em .0em .2em;
+	font-size: .8em;
+	text-align: center;	
+}
+.table.sortable th {
+	color: #FF9900;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.table.sortable tr:nth-child(even) {
+	background-image: url("images2/tr7.png");
+}
+.table.sortable tr:nth-child(odd) {
+	background-image: url("images2/tr5.png");
+}
+
+.white_header {
+	color: white !important;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+
+.tableArchive  {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top:1em;
+	margin-bottom:1em;
+	table-layout:fixed;
+	width: 100%;
+	padding-right: 4.5em;
+	padding-left: 4.5em;
+} 
+
+.tableArchive  td {
+	padding:.2em;
+	margin: .3em 2em .5em 2em ;
+	font-size: 1em;
+	text-align: center;	
+}
+.tableArchive  th {
+	color: #FF9900;
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.lossCSS {
+	color:red;
+}
+.winCSS {
+	color:green;
+}
+
+form {
+	text-align:center;
+	padding: 0;
+	margin: 0;
+}
+
+input[type=submit] {
+	background-color:#307D7E;
+	font-size:11pt;
+	font-weight:bold;
+	border-color: #181818;
+}
+
+input[type=submit]:hover {
+ color: white !important; 
+ cursor:pointer !important;
+}
+
+#error {
+	font-weight:bold;
+	color: #FF9900;
+	padding:6px;
+}
+
+#small {
+	font-size:8px;
+}
+
+/* Style The Dropdown Button */
+.dropbtn {
+    background-image: url("images2/background.png");;
+    color: #FF9900;
+    border: none;
+    cursor: pointer;
+		word-wrap: break-word;
+		font-size: .94em;
+		font-weight: bold;
+		text-decoration: underline; 
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-image: url("images2/tr7.png");
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: #FF9900;
+    padding: 12px 16px;
+    display: block;
+		font-size: .8em;
+		text-decoration: none;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	color: white;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.dropdown:hover .dropbtn {
+    background-color: #171717;
+		color: white;
+}
+
+#imageHover:hover
+{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:65%;
+}

@@ -1,0 +1,12 @@
+<!-- # login.html - Script 9.12 -->
+<section class="threeColumns">
+    <article class="oneThird">
+    </article>
+	<article class="twoThirds">
+	    <h1>Login</h1>
+	    <?php if ($form->isSubmitted() && $form->validate()) {
+	        echo '<p class="error">The values submitted do not match those on file!</p>';
+	    }?>
+	    <?php echo $form; ?>
+	</article>
+</section>

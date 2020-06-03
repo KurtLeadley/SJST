@@ -1,0 +1,39 @@
+<!-- # index.html - Script 9.8 -->
+<section class="article-grid">
+<?php // Fetch the results and display them:
+
+while ($page = $r->fetch()) { ?>
+  <?php
+	$pageidForCommentCount = $page->getId();
+	
+	$q =	"SELECT pages.id, pages.title,count(pages.id) as total 
+					FROM pages
+					JOIN comments 
+					ON pages.id = comments.pageID
+					WHERE pages.id = $pageidForCommentCount";
+	
+	$stmt = $pdo->prepare($q);
+	$r2 = $stmt->execute();
+    		
+  if ($r2){
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$commentCount = $row['total'];
+		?>
+			<article class="story">
+				<div class="article-top-info">
+					<h3 class="black-header"><a class="black-header" href="page.php?id=<?php echo $page->getId();?>"><?php echo $page->getTitle();?></a></h3>
+					<p><?php echo $page->getDateAdded(); ?></p>
+					<p><i class="fa fa-comments" aria-hidden="true"></i><?php echo $commentCount; ?></p>
+					<p>By <?php echo $page->getAlias(); ?></p>
+				</div>
+				<a class="story-image" href="page.php?id=<?php echo $page->getId();?>">
+					<img src='<?php echo $page->getImage();?>' height='300px'/>
+				</a>
+				<p class="black-text"><?php echo $page->getDesc();?></p>   
+			</article>
+		<?php 
+		}
+	}
+}
+?>
+</section>

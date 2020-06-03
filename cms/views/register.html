@@ -1,0 +1,16 @@
+<!-- # register.html - Script 9.16 -->
+<section class="threeColumns">
+    <article class="oneThird">
+        <p>Forum under reconstruction</p>
+    </article>
+    <article class="twoThirds">
+        <h1>Registration Disabled</h1>
+        <?php 
+        if ($form->isSubmitted() && $form->validate()) {
+            echo '<p>You are now registered!</p>';
+        } else {
+            echo $form;
+        }
+        ?>
+    </article>
+</section>

@@ -1,0 +1,36 @@
+<!-- # archive.html - Script 9.8 -->
+<section class="threeColumns">
+<?php // Fetch the results and display them:
+
+while ($page = $r->fetch()) { ?>
+  <?php
+	$pageidForCommentCount = $page->getId();
+	
+	$q =	"SELECT pages.id, pages.title,count(pages.id) as total 
+					FROM pages
+					JOIN comments 
+					ON pages.id = comments.pageID
+					WHERE pages.id = $pageidForCommentCount";
+	
+	$stmt = $pdo->prepare($q);
+	$r2 = $stmt->execute();
+    		
+  if ($r2){
+		while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			$commentCount = $row['total'];
+		?>
+			<article class="story">
+				<h3 class="blackHeader"><a class="blackHeader" href="page.php?id=<?php echo $page->getId();?>"><?php echo $page->getTitle();?></a></h3>
+				<h5><span><?php echo $page->getDateAdded(); ?></span><span style="float:right"><i class="fa fa-comments" aria-hidden="true"></i><?php echo $commentCount; ?></span></h5>
+				<h5><span>By <?php echo $page->getAlias(); ?></span></h5>
+				<a class="storyImage" href="page.php?id=<?php echo $page->getId();?>">
+					<img src='<?php echo $page->getImage();?>' height='300px'/>
+				</a>
+				<p class="blackText"><?php echo $page->getDesc();?></p>   
+			</article>
+		<?php 
+		}
+	}
+}
+?>
+</section>

@@ -1,0 +1,56 @@
+<script>
+var auto_refresh = setInterval(
+(function () {
+    $("#allComments").load("comment_ajax.php?id=<?php echo $pageID ?>"); //Load the content into the div
+}), 5000);
+</script>
+<section class="fullWidth">
+	<article class="articleContent">
+		<?php $creatorID = $page->getCreatorId(); ?>
+		<?php 
+			if($user) {
+				$userID = $user->getId(); 
+			}
+		?>
+			<h1><?php echo $page->getTitle(); ?></h1>
+			<h6><span><?php echo $page->getAlias() ?>&nbsp;&nbsp;&nbsp;<?php echo $page->getDateAdded(); ?></span></h6>
+			<img src='<?php echo $page->getImage();?>' width='100%' />
+			<?php echo $page->getContent(); ?> 
+			<br />
+			<?php 
+				if(($user) && (($creatorID == $userID) || ($user->getUserType() == 'admin' ))) {
+					echo '<p><a class="commentlink" href="edit_page.php?id=' . $page->getId() . '">EDIT</a></p>';
+				}
+			?>
+	</article>
+<?php
+	
+include('comment.php'); // all the comments are loaded in right here
+
+$time = (new \DateTime())->format('M j Y | h:i A');
+if($user) { 
+		$q = $pdo->prepare("SELECT image, sig FROM users WHERE id = :sessionUserID");
+		$q->bindParam(':sessionUserID', $user->getId());
+		$q->execute();
+		$r = $q->fetchAll();
+		
+		foreach ($r as $row) {
+			$image = $row['image'];
+			$sig = $row['sig'];
+		}
+?>  
+	<form id="commentForm" action="" method="post" onsubmit="postComment(event);">
+			<input type="text" placeholder="Subject" id="title" >
+		  <textarea class="textarea" id="comment" name="comment" ></textarea>
+			<input type="hidden" id="pageID" value="<?php echo $pageID; ?>">
+			<input type="hidden" id="userID" value="<?php echo $user->getId(); ?>">
+			<input type="hidden" id="userName" value="<?php echo $user->getUserName(); ?>">
+			<input type="hidden" id="time" value="<?php echo $time; ?>">
+			<input type="hidden" id="image" value="<?php echo htmlspecialchars($image); ?>">
+			<input type="hidden" id="sig" value="<?php echo $sig; ?>">
+			<input type="submit">
+	</form>
+<?php 
+}
+?>
+</section>

@@ -1,0 +1,338 @@
+/*body, text and heading defaults
+=================================*/
+
+/* Colors: 
+#307D7E : Teal
+#FF9900 : Orange
+background: #151515 */
+body {
+	background-image: url("../images/background.png");
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	color:#307D7E;
+}
+.wrapper {
+	margin-left:5%;
+	margin-right:5%;
+}
+.content.wrapper {
+	margin-top:200px;
+}
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	display:grid;
+	grid-template-columns: 1fr 3fr;
+	background-image: url("../images/background.png");
+}
+/* .header #nav-div ul {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+} */
+.header #nav-div ul li {
+	font-size:16pt;
+}
+.header .menu-btn {
+	display: none;
+}
+.header img {
+    height:150px;
+}
+h1 {
+	text-align: center;
+}
+a {
+	color: #FF9900;
+}
+li {
+	list-style-type: none;
+}
+.header ul {
+	padding-left:0;
+}
+li a, h3 a {
+	text-decoration: none;
+}
+.black-text {
+	color: #151515;
+}
+.article-grid {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 30px; 
+	grid-row-gap:30px;
+	width:100%;
+	margin:30px 0px;
+}
+.article-grid .story {
+	background-color: #ffff;
+	border: solid 2px #FF9900;
+	border-radius: 10px;
+}
+.article-grid .story .article-top-info {
+	display:grid;
+	grid-column-gap: 0;
+	grid-template-areas:  
+	"title count"
+	"name ."
+	"date .";
+	background: rgb(48,125,126);
+	background: linear-gradient(90deg, rgba(48,125,126,1) 0%, rgba(11,58,66,1) 91%);
+	border-radius: 10px 10px 0px 0px;
+}
+.article-grid .story .article-top-info h3 {
+	grid-area: title;
+}
+.article-grid .story .article-top-info p:nth-of-type(1) {
+	grid-area: date;
+}
+.article-grid .story .article-top-info p:nth-of-type(2) {
+	grid-area: count;
+	justify-self: end;
+}
+.article-grid .story .article-top-info p:nth-of-type(3) {
+	grid-area: name;
+}
+.article-grid .story .article-top-info p {
+	color:#ffff;
+}
+.article-grid .story img {
+	width:100%;
+	object-fit: cover;		
+}
+.article-grid .story p,
+.article-grid .story h3 {
+	padding:0 15px;
+}
+.footer-grid {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 15px;        
+}
+/*** COMMENT PAGES ****/
+.articleContent {
+    background-color:#ffff;
+    border: solid 4px #307D7E;
+}
+.articleContent h1,
+.articleContent p {
+    color:black;
+    padding: 10px;
+}
+.articleContent h1 {
+    align-self: auto;
+}
+.articleContent h6 {
+    padding:0px 10px;
+    margin:0 0 5px 0;
+    font-size:12px;
+}
+.comment, .comment_liked {
+    margin: 10px 0;
+    border: solid 4px #307D7E;
+    color: black;
+}
+.comment {
+	background-color: #ffff;
+	display:grid;
+	grid-row-gap: 5px;
+    grid-template-areas:
+    "title title title title title avatar"
+    "comment comment comment comment comment avatar"
+    "sig sig sig sig sig avatar"
+	"info info info info info avatar"
+	"rec . . . . .";
+}
+.comment p {
+	margin:0;
+	padding:0;
+}
+.comment-title, .comment-body, .comment-user-sig, .comment-user-name {
+	padding-left:15px;
+    margin:0
+}
+.comment_liked {
+    background-color: #90d4d5;
+}
+.comment-title {
+    grid-area: title;
+	font-weight: bold;
+	margin:10px 0;
+}
+.comment-avatar {
+    grid-area: avatar;
+    justify-self: right;
+}
+.comment-body {
+    grid-area: comment;
+}
+.comment-user-sig {
+    grid-area: sig;
+    font-style: italic;
+	color: #307D7E;
+	font-size: 10pt;
+}
+.comment-user-name {
+    grid-area: info;
+    font-size:10pt;
+}
+.comment-rec-button {
+	grid-area: rec;
+}
+.rec-button {
+	background-color: #90d4d5;
+}
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+    .article-grid {
+        display:grid;
+        grid-template-columns: 1fr;
+		grid-column-gap: 15px; 
+		width:100% 
+	}
+	.footer-grid {
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-column-gap: 15px;        
+	}	
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+	.header {
+		width:unset;
+	}
+	.article-grid {
+        grid-template-columns: 1fr;
+	}
+	.footer-grid {
+        grid-template-columns: 1fr;       
+	}
+	.header img {
+		height:120px;
+	}
+	.content.wrapper {
+		margin-top:146px;
+	}
+	/**************/
+	/* navigation */
+	/**************/	  
+	  .header ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		overflow: hidden;
+		background: linear-gradient(90deg, rgba(48,125,126,1) 0%, rgba(11,58,66,1) 91%);
+	  }
+	  
+	  .header li a {
+		display: block;
+		padding: 20px 20px;
+		border-right: 1px solid #f4f4f4;
+		text-decoration: none;
+	  }
+	  
+	  .header li a:hover,
+	  .header .menu-btn:hover {
+		background-color: #f4f4f4;
+	  }
+	  
+	  .header .logo {
+		display: block;
+		float: left;
+		font-size: 2em;
+		padding: 10px 20px;
+		text-decoration: none;
+	  }
+	  
+	  /* menu */
+	  
+	  .header .menu {
+		clear: both;
+		max-height: 0;
+		transition: max-height .2s ease-out;
+	  }
+	  
+	  /* menu icon */
+	  
+	  .header .menu-icon {
+		cursor: pointer;
+		display: inline-block;
+		float: right;
+		padding: 48px 15%;
+		position: relative;
+		user-select: none;
+	  }
+	  
+	  .header .menu-icon .navicon {
+		background: #FF9900;
+		display: block;
+		height: 6px;
+		position: relative;
+		transition: background .2s ease-out;
+		width: 36px;
+	  }
+	  
+	  .header .menu-icon .navicon:before,
+	  .header .menu-icon .navicon:after {
+		background: #FF9900;
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		transition: all .2s ease-out;
+		width: 100%;
+	  }
+	  
+	  .header .menu-icon .navicon:before {
+		top: 10px;
+	  }
+	  
+	  .header .menu-icon .navicon:after {
+		top: -10px;
+	  }
+	  
+	  /* menu btn */
+	  	  
+	  .header .menu-btn:checked ~ .menu {
+		max-height: 240px;
+	  }
+	  
+	  .header .menu-btn:checked ~ .menu-icon .navicon {
+		background: transparent;
+	  }
+	  
+	  .header .menu-btn:checked ~ .menu-icon .navicon:before {
+		transform: rotate(-45deg);
+	  }
+	  
+	  .header .menu-btn:checked ~ .menu-icon .navicon:after {
+		transform: rotate(45deg);
+	  }
+	  
+	  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+	  .header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+		top: 0;
+	  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+ 
+	.article-grid {
+        grid-template-columns: 1fr 1fr;
+	}
+	.footer-grid {
+        grid-template-columns: 1fr 1fr;       
+	}
+}
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+
+}

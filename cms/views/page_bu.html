@@ -1,0 +1,152 @@
+<!-- # page.html - Script 9.10 -->
+<script src="js/tinymce_4.5.1/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js"></script>
+<script>
+$(document).ready(function () {
+
+    $('#commentForm').validate({ // initialize the plugin
+        rules: {
+            title: {
+                required: true,
+            },
+            comment: {
+                required: true,
+            }
+        }
+    });
+
+});
+
+</script>
+<script>
+    tinymce.init({
+        selector: "textarea",
+        theme: "modern",
+        width: '100%',
+        height: 50,
+        plugins: [
+             "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+             "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+             "save table contextmenu directionality emoticons template paste textcolor",
+						 "autoresize"
+       ],
+			 menubar:false,
+
+       content_css: "css/content.css",
+       toolbar: " bold italic | bullist numlis | link image | media fullpage | emoticons", 
+    }); 
+</script> 
+<script type="text/javascript">
+function post()
+{
+  var comment = document.getElementById("comment").value;
+  var name = document.getElementById("username").value;
+  if(comment && name)
+  {
+    $.ajax
+    ({
+      type: 'post',
+      url: 'post_comment.php',
+      data: 
+      {
+         user_comm:comment,
+	     user_name:name
+      },
+      success: function (response) 
+      {
+	    document.getElementById("all_comments").innerHTML=response+document.getElementById("all_comments").innerHTML;
+	    document.getElementById("comment").value="";
+        document.getElementById("username").value="";
+  
+      }
+    });
+  }
+  
+  return false;
+}
+</script>
+<section class="fullWidth">
+    <article class="articleContent">
+				<?php $creatorID = $page->getCreatorId(); ?>
+				<?php if($user) { $userID = $user->getId(); } ?>
+        <h1><?php echo $page->getTitle(); ?></h1>
+				 <h6><span><?php echo $page->getAlias() ?>&nbsp;&nbsp;&nbsp;<?php echo $page->getDateAdded(); ?></span></h6>
+				<img src='<?php echo $page->getImage();?>' width='100%' />
+        <?php echo $page->getContent(); ?> 
+				<br />
+        <?php if(($user) && (($creatorID == $userID) || ($user->getUserType() == 'admin' ))) {
+        echo '<p><a href="edit_page.php?id=' . $page->getId() . '">EDIT</a></p>';
+        }
+		?>
+    </article>
+		<?php		
+			$q = 'SELECT comments.id, comments.userID, comments.title, comments.comment, comments.pageID, users.username, users.id AS usersid, DATE_FORMAT(comments.dateAdded, "%M %e %Y | %h:%i %p") AS dateAdded 
+						FROM comments
+						LEFT JOIN users ON (comments.userID = users.id)
+						WHERE pageId=:pageId'; 
+			$stmt = $pdo->prepare($q);
+			$r = $stmt->execute(array(':pageId' => $page->getId()));
+			$count = $stmt->rowCount();
+		?>
+		<h2><?php echo $count. " ";?>Comments:</h2>
+		<?php 
+		if ($r){
+			while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+				$comment = $row['comment'];
+				$title = $row['title'];
+				$dateAdded = $row['dateAdded'];
+				$userID = $row['usersid'];
+				$userName = $row['username'];
+								
+				?>
+				<div class="comments">
+					<table class="commentsTable">
+						<tr class="trTitle">
+							<td colspan='2'><?php echo $title ?></td>
+						</tr>
+						<tr>
+							<td colspan='2'><?php echo $comment ?></td>
+						</tr>
+						<tr>
+						<td class="trUser">Posted by <?php echo $userName ?> <?php echo $dateAdded ?> </td>
+						</tr>
+					</table>
+		    </div>
+				<?php
+			}
+		}	
+	
+if($user) { ?>
+	<form id="commentForm" action="/cms/page.php?id=<?php echo $page->getId() ?>" method="post">
+			<input type="text" placeholder="Subject" name="title">
+			<input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
+			<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+		  <textarea class="textarea" name="comment"></textarea>
+			<input type="submit">
+	</form>
+<?php 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') { // Handle the form submission
+		// Insert into the database:
+		
+		$pageID = $_POST['pageID'];
+		$userID = $user->getId();
+		$title = $_POST['title'];
+		$title = trim($title);
+		$comment = $_POST['comment'];
+		$comment = trim($comment);
+		
+		$q = $pdo->prepare("INSERT INTO comments (userID, title, comment, pageID, dateAdded) VALUES (:userID, :title, :comment, :pageID, NOW())");
+				
+		$q->bindParam(':userID', $userID);
+		$q->bindParam(':title', $title);
+		$q->bindParam(':comment', $comment);
+		$q->bindParam(':pageID', $pageID);
+		
+		$result = $q->execute();	
+				
+	 header('Location: http://sjsharktank/cms/page.php?id=<?php echo $page->getId() ?>');       
+	} 					
+} 
+?>
+</section>
